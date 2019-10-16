@@ -1,0 +1,28 @@
+swagger: '2.0'
+info:
+  title: Pipeline API
+  version: "0.1"
+  description: Blah blah
+
+paths:
+
+  /predict:
+    post:
+      summary: Entrypoint to our prediction function
+      operationId: pipeline_app.predict
+      consumes:
+      - multipart/form-data
+      produces:
+      - application/json
+      parameters:
+        - in: formData
+          name: sepal_length
+          required: true
+          description: The sepal length in cm
+          type: number
+
+      responses:
+        '200':
+          description: Classification performed successfully
+        '500':
+          description: Unable to perform the classification
